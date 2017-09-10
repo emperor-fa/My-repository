@@ -1,6 +1,7 @@
 #include<iostream>
 #include<vector>
 #include <fstream>
+#include<ctime>
 #define mysize 9
 using namespace std;
 class Sudoku
@@ -98,10 +99,15 @@ bool Sudoku::setnum(int row, int col)   //填数
 		return false;
 	}
 }
-int main()
+int main(int argc, char *argv[])
 {
-	int n, i;
-	cin >> n;
+	int n,i;
+	if (sscanf_s(argv[2],"%d", &n) == 0)
+	{
+		cout << "请输入一个数字：" << endl;
+		return 0;
+	}
+	srand((int)time(0));
 	ofstream fout("sudoku.txt", ios::trunc);      //清空文本
 	for (i = 0; i < n; i++)
 	{
